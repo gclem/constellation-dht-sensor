@@ -19,20 +19,21 @@ var forgeValueObject = (temperature, humidity, room) => {
 var getValues = (ctx) => {
 
     //// Refreshing settings
-    var settings = ctx.hub.server.requestSettings();
+    ctx.hub.server.requestSettings()
+        .then((settings, err) => {
+            if (!settings || !settings.dht || !settings.room || !settings.gpio)
+            {
+                ctx.hub.server.writeLog("You must set setting values to use this package : dht(11,22) ,  gpio, room.", "error");
+                return;
+            }
 
-    if (!settings || !settings.dht || !settings.room || !settings.gpio)
-    {
-        ctx.hub.server.writeLog("You must set setting values to use this package : dht(11,22) ,  gpio, room.", "error");
-        return;
-    }
-
-    sensor.read(settings.dht, settings.gpio, function(err, temperature, humidity) {
-        if (!err) {
-            forgeValueObject(temperature.toFixed(1), humidity.toFixed(1), settings.room);
-            ctx.hub.server.pushStateObject("" + currency, po, "Sensor.DHTAmbientSensor", 0);
-        } else ctx.hub.server.writeLog("Error while retrieving values from DHT Sensor : ", error);
-    });
+            sensor.read(settings.dht, settings.gpio, function(err, temperature, humidity) {
+                if (!err) {
+                    forgeValueObject(temperature.toFixed(1), humidity.toFixed(1), settings.room);
+                    ctx.hub.server.pushStateObject("" + currency, po, "Sensor.DHTAmbientSensor", 0);
+                } else ctx.hub.server.writeLog("Error while retrieving values from DHT Sensor : ", error);
+            });
+        });
 }
 
 //// Create a Sentinel Hub
