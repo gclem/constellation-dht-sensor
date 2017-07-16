@@ -1,0 +1,15 @@
+{
+  /**
+  * Constellation Configuration
+  **/
+  "constellation": {
+    //// Constellation url
+    "url" : "http://constellation.local",
+    //// Constellation Hub Access key
+    "accessKey" : "1123213123",
+    //// Your application name
+    "applicationName" : "DHTSensor",
+    ///// Sdk Version
+    "sdkVersion" : "1.8.2"
+  }
+}

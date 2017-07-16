@@ -1,0 +1,26 @@
+{
+  "name": "constellation-dht-sensor",
+  "version": "1.0.0",
+  "description": "Constellation Platform - Get temp & humidity from DHT sensors, and Push to Constellation Platform -  myconstellation.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/gclem/constellation-dht-sensor.git"
+  },
+  "keywords": [
+    "constellation",
+    "dht"
+  ],
+  "author": "gioindahouz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gclem/constellation-dht-sensor/issues"
+  },
+  "homepage": "https://github.com/gclem/constellation-dht-sensor#readme",
+  "dependencies": {
+    "constellation-nodejs": "^2.0.1"
+  }
+}
